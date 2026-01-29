@@ -1,0 +1,164 @@
+          .---.              .---.
+         /     \  ________  /     \
+        |  (O)  ||        ||  (O)  |
+        |       ||        ||       |
+         \     /  \______/  \     /
+          '---'              '---'
+           | |                | |
+           | |                | |
+           | |                | |
+           | |________________| |
+          /                    \
+         |      ROCK ON!        |
+          \____________________/
+
+# 🏁 MetalWar Installer: Demoscene Edition 🏁
+
+![Python](https://img.shields.io)
+![Pygame](https://img.shields.io)
+![License](https://img.shields.io)
+
+**MetalWar Installer** no es solo un instalador de traducciones; es un tributo a la **Demoscene de los 90**. Un motor de despliegue genérico diseñado para distribuir parches y traducciones fanmade con una estética agresiva, visuales 3D en tiempo real y sincronización musical perfecta.
+"El sistema implementa un 'Visual Context Switcher' que garantiza que cada track de la playlist tenga su propia identidad visual, optimizando el renderizado según la complejidad del módulo de audio detectado."
+
+> *"Porque si vamos a parchear un juego, vamos a hacerlo con estilo, y dos cojones.🤘"*
+
+---
+
+## 🕹️ Características Principales
+
+### 💎 Visuales Demoscene (effects.py)
+*   **Starfield 3D Agresivo**: Campo de estrellas con rotación de cámara tipo *barrel roll* y efecto *warp* reactivo al BPM.
+*   **Visualizadores Adaptativos**: El motor gráfico detecta el formato de audio en tiempo real. Al cambiar de canción, el sistema conmuta automáticamente entre diferentes modos de visualización (ej. Modo Neón 3D para archivos `.it`, Analizadores de Espectro clásicos para `.mp3, etc.`).
+*   **Headbang / Rave Mode**: Un sistema de sobrecarga visual que se activa mediante interacción, disparando la intensidad de los efectos, activando vibración de cámara y sincronización agresiva con el BPM.
+
+*   **Geometric Transformer**: Renderizado de polígonos 3D (Esferas, Toroides) con optimización matemática de bajo nivel.
+*   **Efecto CRT & Glitch**: Simulación de monitor antiguo con scanlines, aberración cromática y ruido visual procedural.
+*   **Tactical HUD**: Sistema de targeting con suavizado *SmoothStep* para una experiencia cinematográfica.
+
+### 🔊 Motor de Audio (audio.py)
+*   **Sincronización BPM**: Visuales que "bailan" literalmente con la música mediante un reloj musical interno.
+*   **Soporte Tracker**: Capacidad nativa para reproducir módulos `.it`, `.xm` y `.mod` (calidad máxima, peso mínimo). Tambien reproduce .mp3 y .ogg.
+*   **Robotic TTS**: Síntesis de voz integrada con efectos de delay estéreo para locuciones de sistema.
+
+### 🛠️ Hardware Hijacking (installer.py)
+*   **Keyboard LED FX**: Control directo de los LEDs de tu teclado físico (`Caps`, `Num`, `Scroll Lock`) con efectos *Knight Rider* y *Disco Mode* durante la instalación.
+*   **Deep Path Discovery**: Localización automática de juegos en múltiples bibliotecas de **Steam** y **Epic Games** mediante escaneo de manifiestos y registro de Windows.
+
+📂 Arquitectura y Desglose por Módulos
+
+🧠 main.py — El Nexo de Control
+🛠️ Fix Crítico PyInstaller: Implementa setup_pyinstaller_fixes para gestionar el desempaquetado en _MEIPASS y directorios temporales seguros.
+🖱️ Bucle de Eventos Multicanal: Gestiona simultáneamente entradas de teclado, ratón y eventos internos del motor.
+⏱️ Sincronización MusicClock: Orquestador que vincula el tiempo del sistema con el BPM de la música para disparar eventos visuales.
+🔄 Máquina de Estados (FSM): Control total del flujo de instalación mediante estados definidos: WAIT, ARMING, TARGETING, WORK, FIRED.
+🧬 config.py — El ADN del Proyecto
+🎛️ Centralización de Parámetros: Control absoluto sobre colores neón, dimensiones de ventana, constantes físicas y timeouts.
+⚙️ Post-Install Engine: Configuración avanzada para ejecutar parcheadores externos (.exe) con argumentos de validación CRC.
+🚩 Visual Branding: Define los mensajes del scroller y los parámetros de la bandera/texto animado (ondas, rotación y brillo).
+🔊 audio.py — Motor de Sonido y Síntesis
+🤖 Double-Tracking Robotic Voice: Función play_robotic que emula efectos de estudio (delay de 20ms) para voces de sistema.
+🎼 Gestor de Playlist Tracker: Soporte real para formatos de la escena (.it, .xm, .mod, .s3m) con detección automática de metadatos.
+🗣️ Integración TTS (Text-To-Speech): Generación dinámica de archivos .wav temporales mediante síntesis de voz nativa de Windows.
+🚫 Reserved Channel Logic: Reserva canales de audio para efectos críticos, evitando la saturación por la música de fondo.
+🎨 effects.py — La Potencia Visual (Demoscene)
+🌌 Starfield 3D Agresivo: Fondo estelar con rotación Barrel Roll, cambio de paletas dinámico y estelas de luz (Warp Lines).
+💠 GeometricTransformer3D: Motor de proyección de vértices para formas complejas (Esferas, Toroides, Nudos) con optimización de caché matemática.
+📊 Analizador de Espectro: Visualización de audio adaptativa según formato: Barras para MP3 y Neón 3D para IT/XM.
+📟 CRTBoot Sequence: Intro narrativa que simula un arranque de terminal antigua con precarga de recursos en segundo plano.
+📺 ui.py — Interfaz y Experiencia (UX)
+💎 LogoMetalWAR: Logo con renderizado híbrido (PNG o texto procedural con gradientes y resplandor aditivo).
+🎯 Tactical HUD: Sistema de seguimiento de objetivos con funciones de suavizado SmoothStep y waypoints aleatorios.
+💾 HexDumpLoader: Animación de volcado de memoria hexadecimal vinculada al progreso real de la instalación.
+💬 Avatar System: Comunicación dinámica mediante "barks" (mensajes rápidos) y diálogos sincronizados.
+🔧 installer.py — Lógica de Despliegue y Hardware
+⌨️ KeyboardFX: Manipulación directa de los registros de Windows para controlar los LEDs físicos del teclado (Num, Caps, Scroll).
+🔍 Deep Search (Steam/Epic): Escaneo de archivos .vdf y registros del sistema para localizar juegos de forma automática.
+🧵 Threading Installer: Ejecución de la extracción en hilos separados para mantener la fluidez de la interfaz a 60 FPS.
+🧰 utils.py — El Kit de Herramientas
+📍 Resource Path Provider: Garantiza la portabilidad absoluta del ejecutable en modo OneFile.
+📺 Glitch Engine: Funciones para aplicar aberración cromática y saltos de scanline de forma procedural.
+🟢 Safe Graphics: Dibujo de círculos con transparencia real mediante SRCALPHA y validación de rangos RGB (safe_color).
+🏭 Compiler_GUIv2.py / compilador.py — La Factoría
+🖼️ Branding Generator: Generador automático de Splash Screens y archivos .ico con estética retro-moderna.
+📝 Version Metadata Injector: Inyección de metadatos en el .exe (versión, compañía, copyright) visibles en Windows.
+📦 PyInstaller Wrapper: Automatiza la creación del archivo .spec y la invocación del compilador con soporte para UPX y UAC.
+
+---
+
+## 🚀 El Compilador (Fábrica de OneFiles)
+
+El proyecto incluye **dos herramientas de compilación** diseñadas para empaquetar el proyecto en un único `.exe` (OneFile) sin dependencias externas:
+
+1.  **Compiler_GUIv2.py**: Interfaz moderna en `customtkinter` con:
+    *   Generador procedural de *Splash Screens* (estilos Lite, Cyberpunk, Heavy Metal).
+    *   Editor de metadatos de versión (`version_info.txt`).
+    *   Conversión automática de iconos.
+2.  **compilador.py (CLI)**: Versión de consola con colores ANSI para debugging y automatización de alto rendimiento.
+
+Recomendable usar la versión GUI, si quieres ir a lo rapido. La versión de consola esta en desarrollo aún.
+
+---
+
+## 🛠️ Instalación y Uso
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com
+    cd metalwar-installer
+    ```
+
+2.  **Instalar dependencias:**
+    ```bash
+    pip install pygame customtkinter pillow pyttsx3 numpy
+    ```
+
+3.  **Ejecutar en modo desarrollo:**
+    ```bash
+    python main.py
+    ```
+
+4.  **Compilar tu propio instalador:**
+    ```bash
+    python Compiler_GUIv2.py
+    ```
+
+---
+
+## ⌨️ Controles en Ejecución
+
+| Tecla | Acción |
+|-------|--------|
+| `F1` | Alternar monitor de sistema (Debug) |
+| `Flechas` | Control de volumen y cambio de pista |
+| `B` | Consola BPM |
+| `N` | Activar/desactivar BPM |
+| `P` | Pausar / Reanudar música |
+| `Click Derecho` | **ACTIVAR MODO RAVE** (Visuales extremos) |
+| `ESC` | Salir del programa |
+
+---
+
+## 📜 Historia y Créditos
+
+Este proyecto nace de la necesidad de devolver algo de jodida magia a los aburridos instaladores. Inspirado por grupos legendarios como **Future Crew**, **Iguana** y **The Black Lotus**.
+
+*   **Código y Lógica:** MetalWAR.
+*   **Apoyo en Arquitectura:** Desarrollado con asistencia de IA (Gemini/DeepSeek) para optimización de bloques y estructuras de compilación.
+*   **Greetings:** Nesrak1 (Unity Tools), LoverActiveMind (Graphics), y a todos los coders que mantienen viva la llama de la retro-escena y modders.
+
+---
+
+## ⚖️ Licencia
+
+Distribuido bajo la **Licencia MIT**. Siéntete libre de usarlo para tus propios parches, siempre que mantengas los créditos y el respeto por el código original.
+
+---
+*Hecho con ❤️ y mucha cafeína.*
+
+    \m/  METALWAR was here! \m/
+    __________________________
+   |  KEEP CODING & ROCKING!  |
+    --------------------------
+          🤘 2026 🤘
+

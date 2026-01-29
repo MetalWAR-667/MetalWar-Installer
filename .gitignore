@@ -1,0 +1,25 @@
+# --- Python & System ---
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# --- PyInstaller & Compilación ---
+build/
+dist/
+*.spec
+*.exe
+*.log
+
+# --- Assets Generados (Solo subir los originales) ---
+splash.png
+icon.ico
+preview_*.png
+
+# --- Temporales de MetalWar ---
+temp/
+metalwar_temp/
+version_info.txt.bak
+# Logs de PyInstaller generados por la versión de consola
+*.log
+*.warn
