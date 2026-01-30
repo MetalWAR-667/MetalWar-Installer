@@ -38,6 +38,207 @@ except ImportError as e:
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
+# ============================================================================
+# FUNCIONES DE CONFIGURACIÓN DE COMPILE.PY (COPIAS EXACTAS)
+# ============================================================================
+
+
+def leer_config():
+    """Lee config.py y devuelve GAME_CONFIG"""
+    try:
+        if not Path("config.py").exists():
+            return None
+
+        with open("config.py", "r", encoding="utf-8") as f:
+            content = f.read()
+
+        match = re.search(r"GAME_CONFIG\s*=\s*({.*?})\s*(?:\n|$)", content, re.DOTALL)
+        if match:
+            try:
+                config_str = match.group(1)
+                config = ast.literal_eval(config_str)
+                return config
+            except:
+                return None
+
+        return None
+
+    except Exception as e:
+        print(f"❌ Error leyendo config: {e}")
+        return None
+
+
+def guardar_config(config):
+    """Guarda la configuración en config.py"""
+    try:
+        if Path("config.py").exists():
+            shutil.copy2("config.py", "config.py.backup")
+
+        config_completo = {
+            "GAME_FOLDER_NAME": config.get("GAME_FOLDER_NAME", "CARPETA DEL JUEGO"),
+            "GAME_NAME_DISPLAY": config.get("GAME_NAME_DISPLAY", "TITULO DEL JUEGO"),
+            "WINDOW_CAPTION": config.get("WINDOW_CAPTION", "MetalWar - Instalador"),
+            "SCROLLER_MESSAGE": config.get(
+                "SCROLLER_MESSAGE", ">>> METALWAR LOADING... SYSTEM INITIALIZED >>>"
+            ),
+            "SUBTITLE_DISPLAY": config.get("SUBTITLE_DISPLAY", ""),
+            "SPANISH_TEXT": config.get("SPANISH_TEXT", "In Awesome Spanish"),
+            "WINDOW_SIZE": config.get("WINDOW_SIZE", (800, 600)),
+            "FPS": config.get("FPS", 60),
+            "IDLE_TIMEOUT": config.get("IDLE_TIMEOUT", 20.0),
+            "POST_INSTALL": config.get(
+                "POST_INSTALL",
+                {
+                    "ENABLED": False,
+                    "PATCHER_EXE": "example.exe",
+                    "TARGET_FILE": "catalog.json",
+                    "ARGUMENT": "patchcrc",
+                },
+            ),
+            "COLORS": config.get(
+                "COLORS",
+                {
+                    "BLACK": (10, 10, 18),
+                    "WHITE": (255, 255, 255),
+                    "BLUE_NEON": (0, 255, 255),
+                    "RED_ALERT": (255, 0, 0),
+                    "CYAN_NEON": (0, 255, 200),
+                    "PEACE_GREEN": (50, 255, 100),
+                    "BUTTON_GRAY": (40, 40, 50),
+                    "BUTTON_HOVER": (60, 60, 75),
+                    "GREEN_SUCCESS": (50, 220, 50),
+                    "LIGHT_TEXT": (135, 206, 250),
+                    "HUD_BG": (0, 0, 0, 180),
+                },
+            ),
+            "AUDIO": config.get("AUDIO", {"BPM": 128, "MUSIC_OFFSET": 0.12}),
+            "BPM_EFFECT": config.get(
+                "BPM_EFFECT", {"IN_NORMAL_MODE": False, "IN_RAVE_MODE": True}
+            ),
+        }
+
+        contenido = """# config.py
+# Configuración principal del juego MetalWar
+# Contiene todos los parámetros ajustables del sistema
+
+GAME_CONFIG = {
+"""
+
+        def formatear_valor(valor, nivel_indent=1):
+            indent = "    " * nivel_indent
+
+            if isinstance(valor, dict):
+                lineas = ["{"]
+                for k, v in valor.items():
+                    lineas.append(
+                        f'{indent}"{k}": {formatear_valor(v, nivel_indent + 1)},'
+                    )
+                lineas.append("    " * (nivel_indent - 1) + "}")
+                return "\n".join(lineas)
+
+            elif isinstance(valor, tuple):
+                if len(valor) == 2:
+                    return f"({valor[0]}, {valor[1]})"
+                elif len(valor) == 4:
+                    return f"({valor[0]}, {valor[1]}, {valor[2]}, {valor[3]})"
+                elif len(valor) == 3:
+                    return f"({valor[0]}, {valor[1]}, {valor[2]})"
+                else:
+                    return str(valor)
+
+            elif isinstance(valor, bool):
+                return "True" if valor else "False"
+
+            elif isinstance(valor, (int, float)):
+                return str(valor)
+
+            elif isinstance(valor, str):
+                valor_escaped = valor.replace('"', '\\"')
+                return f'"{valor_escaped}"'
+
+            else:
+                return repr(valor)
+
+        secciones = [
+            (
+                "INFORMACIÓN BÁSICA",
+                [
+                    ("GAME_FOLDER_NAME", "Nombre de la carpeta donde se instalará"),
+                    ("GAME_NAME_DISPLAY", "Título que se muestra en pantalla"),
+                    ("WINDOW_CAPTION", "Título de la ventana"),
+                    ("SCROLLER_MESSAGE", "Mensaje del scroller animado"),
+                    ("SUBTITLE_DISPLAY", "Subtítulo opcional"),
+                    ("SPANISH_TEXT", "Texto personalizable"),
+                ],
+            ),
+            (
+                "CONFIGURACIÓN DE VENTANA Y RENDIMIENTO",
+                [
+                    ("WINDOW_SIZE", "Resolución de pantalla"),
+                    ("FPS", "Fotogramas por segundo objetivo"),
+                    (
+                        "IDLE_TIMEOUT",
+                        "Tiempo de inactividad antes de activar modo avatar",
+                    ),
+                ],
+            ),
+            (
+                "CONFIGURACIÓN DE POST-INSTALACIÓN",
+                [
+                    ("POST_INSTALL", "Parche automático post-instalación"),
+                ],
+            ),
+            (
+                "PALETA DE COLORES DEL JUEGO",
+                [
+                    ("COLORS", "Paleta de colores (RGB y RGBA)"),
+                ],
+            ),
+            (
+                "CONFIGURACIÓN DE AUDIO Y SINCRONIZACIÓN BPM",
+                [
+                    ("AUDIO", "Audio y sincronización BPM"),
+                ],
+            ),
+            (
+                "CONTROL DE EFECTOS BPM",
+                [
+                    ("BPM_EFFECT", "Efectos BPM en formas geométricas por modo"),
+                ],
+            ),
+        ]
+
+        primera_clave = True
+
+        for titulo_seccion, claves in secciones:
+            if not primera_clave:
+                contenido += "\n"
+            contenido += f"\n    # {titulo_seccion}\n"
+
+            for clave, comentario in claves:
+                if clave in config_completo:
+                    valor = config_completo[clave]
+                    contenido += f'    "{clave}": {formatear_valor(valor)},\n'
+                    primera_clave = False
+
+        contenido += "}\n"
+
+        with open("config.py", "w", encoding="utf-8") as f:
+            f.write(contenido)
+
+        print("✅ config.py guardado correctamente")
+        return True
+
+    except Exception as e:
+        print(f"❌ Error al guardar config.py: {e}")
+        if Path("config.py.backup").exists():
+            try:
+                shutil.copy2("config.py.backup", "config.py")
+                print("✅ Restaurado desde backup")
+            except:
+                pass
+        return False
+
 
 # ============================================================================
 # CLASE DEMOSCENE FACTORY (Lógica Original)
@@ -950,7 +1151,7 @@ class MetalWarCompilerApp(ctk.CTk):
         print("✅ Configuración reparada (datos listos)")
 
     def reparar_config_gui(self):
-        """Replica la opción 10. Reparar config.py de Compile.py - MÉTODO ORIGINAL"""
+        """Repara config.py usando el método directo"""
         try:
             respuesta = messagebox.askyesno(
                 "Reparar config.py",
@@ -963,60 +1164,18 @@ class MetalWarCompilerApp(ctk.CTk):
                 print("Operación cancelada")
                 return False
 
-            print("Reparando config.py...")
-
-            config_reparado = {
-                "GAME_FOLDER_NAME": "CARPETA DEL JUEGO",
-                "GAME_NAME_DISPLAY": "TITULO DEL JUEGO",
-                "WINDOW_CAPTION": "Instalador DemoScene",
-                "SCROLLER_MESSAGE": ">>> MetalWAR PROUDLY PRESENTS <<<              THE ULTIMATE SPANISH TRANSLATION FIX!               CODE: MihWeb0hM0ren0h...   SPECIAL THANKS TO NESRAK1 FOR THE UNITY TOOLS! ...  GRAPHICS BY LoverActiveMind...   MUSIC: ALWAYS!...                                 GREETINGS TO ELOTROLADO TRANSLATORS MEMBERS AS... Shad0wman1, l0coroco96, HoJuEructus, & whoever arrives!,....    & THANKS TO ALL THE FAKkIN'C0D€R$ ON THIS FAKkIN PLANET FOR MAKING OUR WORK EASIER WITH YOUR AWESOME TOOLS.        RESPECT FOR THAT! \\m/      ... and of course to LEGACY OF... FUTURE CREW, IGUANA, THE BLACK LOTUS, KEWLERS, AND SECOND REALITY TEAM...  YOU STARTED MY WAR!",
-                "SUBTITLE_DISPLAY": "",
-                "SPANISH_TEXT": "In Awesome Spanish",
-                "WINDOW_SIZE": (800, 600),
-                "FPS": 60,
-                "IDLE_TIMEOUT": 20.0,
-                "POST_INSTALL": {
-                    "ENABLED": False,
-                    "PATCHER_EXE": "example.exe",
-                    "TARGET_FILE": "catalog.json",
-                    "ARGUMENT": "patchcrc",
-                },
-                "COLORS": {
-                    "BLACK": (10, 10, 18),
-                    "WHITE": (255, 255, 255),
-                    "BLUE_NEON": (0, 255, 255),
-                    "RED_ALERT": (255, 0, 0),
-                    "CYAN_NEON": (0, 255, 200),
-                    "PEACE_GREEN": (50, 255, 100),
-                    "BUTTON_GRAY": (40, 40, 50),
-                    "BUTTON_HOVER": (60, 60, 75),
-                    "GREEN_SUCCESS": (50, 220, 50),
-                    "LIGHT_TEXT": (135, 206, 250),
-                    "HUD_BG": (0, 0, 0, 180),
-                },
-                "AUDIO": {"BPM": 128, "MUSIC_OFFSET": 0.12},
-                "BPM_EFFECT": {"IN_NORMAL_MODE": False, "IN_RAVE_MODE": True},
-            }
-
-            import shutil
-
-            if Path("config.py").exists():
-                shutil.copy2("config.py", "config.py.backup")
-                print("✅ Backup creado: config.py.backup")
-
-            self.config_data = config_reparado
-
-            if self.save_config_file():
-                self.load_config_file()
+            # Usar el método directo que crea el archivo EXACTO
+            if self.reparar_config_directo():
+                # Actualizar la UI si estamos en la sección de configuración
+                if hasattr(self, "config_scroll") and self.config_scroll.winfo_exists():
+                    self.populate_config_ui()
 
                 messagebox.showinfo(
                     "Configuración Reparada",
                     "✅ config.py reparado correctamente\n\n"
-                    "Se ha creado un archivo config.py nuevo con valores por defecto.\n"
+                    "Se ha creado un archivo config.py nuevo con el formato original.\n"
                     "El archivo original se guardó como config.py.backup",
                 )
-
-                print("✅ config.py reparado")
                 return True
             else:
                 messagebox.showerror(
@@ -1027,11 +1186,7 @@ class MetalWarCompilerApp(ctk.CTk):
                 return False
 
         except Exception as e:
-            print(f"❌ Error reparando config.py: {e}")
-            import traceback
-
-            traceback.print_exc()
-
+            print(f"❌ Error en interfaz de reparación: {e}")
             messagebox.showerror("Error", f"❌ Error reparando config.py:\n\n{str(e)}")
             return False
 
@@ -1260,16 +1415,15 @@ class MetalWarCompilerApp(ctk.CTk):
         ctk.CTkFrame(self.config_scroll, height=30, fg_color="transparent").pack()
 
     def save_config_file(self):
-        """Guarda config.py - MANTIENE ESTRUCTURA ORIGINAL para compatibilidad con main.py"""
+        """Guarda config.py usando la misma lógica que compile.py"""
         try:
-            # 1. Primero asegurarnos de que tenemos datos
+            # 1. Verificar que tenemos datos de la UI
             if not hasattr(self, "config_entries") or not self.config_entries:
                 print("⚠ No hay campos de configuración para guardar")
+                messagebox.showwarning("Advertencia", "No hay cambios para guardar")
                 return False
 
-            # 2. Recoger valores de la UI
-            nuevos_valores = {}
-
+            # 2. Actualizar self.config_data con los valores de la UI
             for clave_ruta, widget in self.config_entries.items():
                 if isinstance(widget, ctk.CTkSegmentedButton):
                     valor_seleccionado = widget.get()
@@ -1279,8 +1433,8 @@ class MetalWarCompilerApp(ctk.CTk):
                     if not raw_valor:
                         continue
 
+                    # Convertir tipos como en compile.py
                     try:
-                        # Intentar convertir tipos
                         if raw_valor.lower() == "true":
                             valor_procesado = True
                         elif raw_valor.lower() == "false":
@@ -1301,9 +1455,9 @@ class MetalWarCompilerApp(ctk.CTk):
                 else:
                     continue
 
-                # Organizar en estructura jerárquica
+                # Actualizar self.config_data
                 partes = clave_ruta.split("|")
-                nivel_actual = nuevos_valores
+                nivel_actual = self.config_data
 
                 for i, parte in enumerate(partes[:-1]):
                     if parte not in nivel_actual:
@@ -1312,122 +1466,220 @@ class MetalWarCompilerApp(ctk.CTk):
 
                 nivel_actual[partes[-1]] = valor_procesado
 
-            print(f"📝 Valores a actualizar: {len(nuevos_valores)} campos")
+            # 3. Guardar usando la misma estructura que compile.py
+            print("💾 Guardando config.py...")
 
-            # 3. Leer archivo original COMPLETO
-            if not Path("config.py").exists():
-                print("❌ Error: config.py no existe")
-                return False
+            # Crear backup
+            if Path("config.py").exists():
+                shutil.copy2("config.py", "config.py.backup")
+                print("✅ Backup creado: config.py.backup")
 
-            with open("config.py", "r", encoding="utf-8") as f:
-                contenido_original = f.read()
+            # Construir contenido con el MISMO formato que compile.py
+            contenido = """# config.py
+# Configuración principal del juego MetalWar
+# Contiene todos los parámetros ajustables del sistema
 
-            # 4. Buscar GAME_CONFIG en el contenido
-            import re
+GAME_CONFIG = {
+"""
 
-            # Patrón que encuentra GAME_CONFIG = { ... }
-            patron = r"(GAME_CONFIG\s*=\s*)({.*?})(\s*(?:\n|$))"
-            match = re.search(patron, contenido_original, re.DOTALL)
+            # Función para formatear valores (igual que compile.py)
+            def formatear_valor(valor, nivel_indent=1):
+                indent = "    " * nivel_indent
 
-            if not match:
-                print("❌ No se encontró GAME_CONFIG en el archivo")
-                return False
-
-            try:
-                # 5. Parsear el diccionario original
-                config_original_str = match.group(2)
-                config_original = ast.literal_eval(config_original_str)
-                print(
-                    f"✅ Diccionario original parseado - {len(config_original)} claves"
-                )
-
-                # 6. Función recursiva para actualizar valores
-                def actualizar_recursivo(original, nuevos):
-                    for clave, valor in nuevos.items():
-                        if (
-                            isinstance(valor, dict)
-                            and clave in original
-                            and isinstance(original[clave], dict)
-                        ):
-                            # Actualizar sub-diccionario
-                            actualizar_recursivo(original[clave], valor)
-                        elif clave in original:
-                            # Actualizar valor directo
-                            print(
-                                f"   🔄 Actualizando {clave}: {original[clave]} -> {valor}"
-                            )
-                            original[clave] = valor
-
-                # 7. Actualizar solo los valores que existen
-                actualizar_recursivo(config_original, nuevos_valores)
-
-                # 8. Actualizar self.config_data también
-                self.config_data = config_original.copy()
-
-                # 9. Convertir de nuevo a string manteniendo formato
-                # Usar repr() para mantener tipos (tuplas, booleanos, etc.)
-                nuevo_config_str = repr(config_original)
-
-                # 10. Reemplazar solo la parte del diccionario
-                contenido_final = (
-                    contenido_original[: match.start(2)]
-                    + nuevo_config_str
-                    + contenido_original[match.end(2) :]
-                )
-
-                # 11. Hacer backup antes de guardar
-                import shutil
-
-                if Path("config.py").exists():
-                    shutil.copy2("config.py", "config.py.backup")
-                    print("✅ Backup creado: config.py.backup")
-
-                # 12. Guardar nuevo contenido
-                with open("config.py", "w", encoding="utf-8") as f:
-                    f.write(contenido_final)
-
-                print("✅ config.py guardado CORRECTAMENTE")
-                print("   • Estructura original preservada")
-                print("   • Compatible con main.py")
-                print("   • Solo valores actualizados")
-
-                # 13. Verificar que se pueda cargar
-                try:
-                    test_vars = {}
-                    exec(open("config.py", "r", encoding="utf-8").read(), {}, test_vars)
-                    if "GAME_CONFIG" in test_vars:
-                        print("✅ Verificación: config.py es válido y ejecutable")
-                        return True
-                    else:
-                        print(
-                            "⚠ Advertencia: GAME_CONFIG no encontrado después de guardar"
+                if isinstance(valor, dict):
+                    lineas = ["{"]
+                    for k, v in valor.items():
+                        lineas.append(
+                            f'{indent}"{k}": {formatear_valor(v, nivel_indent + 1)},'
                         )
-                        return True  # Aún así retorna True porque el archivo se guardó
-                except Exception as e:
-                    print(f"⚠ Advertencia en verificación: {e}")
-                    # Restaurar backup si hay error grave
-                    if Path("config.py.backup").exists():
-                        shutil.copy2("config.py.backup", "config.py")
-                        print("   🔄 Restaurado desde backup")
-                    return False
+                    lineas.append("    " * (nivel_indent - 1) + "}")
+                    return "\n".join(lineas)
 
-            except Exception as e:
-                print(f"❌ Error procesando config.py: {e}")
-                import traceback
+                elif isinstance(valor, tuple):
+                    if len(valor) == 2:  # WINDOW_SIZE
+                        return f"({valor[0]}, {valor[1]})"
+                    elif len(valor) == 4:  # RGBA
+                        return f"({valor[0]}, {valor[1]}, {valor[2]}, {valor[3]})"
+                    elif len(valor) == 3:  # RGB
+                        return f"({valor[0]}, {valor[1]}, {valor[2]})"
+                    else:
+                        return str(valor)
 
-                traceback.print_exc()
+                elif isinstance(valor, bool):
+                    return "True" if valor else "False"
 
-                # Restaurar backup si existe
-                if Path("config.py.backup").exists():
-                    try:
-                        shutil.copy2("config.py.backup", "config.py")
-                        print("   🔄 Configuración restaurada desde backup")
-                    except:
-                        pass
-                return False
+                elif isinstance(valor, (int, float)):
+                    return str(valor)
+
+                elif isinstance(valor, str):
+                    # Escapar comillas como en compile.py
+                    valor_escaped = valor.replace('"', '\\"')
+                    # Mantener saltos de línea si existen en el texto original
+                    return f'"{valor_escaped}"'
+
+                else:
+                    return repr(valor)
+
+            # Añadir todas las secciones (formato igual que compile.py)
+            secciones = [
+                (
+                    "INFORMACIÓN BÁSICA",
+                    [
+                        "GAME_FOLDER_NAME",
+                        "GAME_NAME_DISPLAY",
+                        "WINDOW_CAPTION",
+                        "SCROLLER_MESSAGE",
+                        "SUBTITLE_DISPLAY",
+                        "SPANISH_TEXT",
+                    ],
+                ),
+                (
+                    "CONFIGURACIÓN DE VENTANA Y RENDIMIENTO",
+                    ["WINDOW_SIZE", "FPS", "IDLE_TIMEOUT"],
+                ),
+                (
+                    "CONFIGURACIÓN DE POST-INSTALACIÓN",
+                    ["POST_INSTALL"],
+                ),
+                (
+                    "PALETA DE COLORES DEL JUEGO",
+                    ["COLORS"],
+                ),
+                (
+                    "CONFIGURACIÓN DE AUDIO Y SINCRONIZACIÓN BPM",
+                    ["AUDIO"],
+                ),
+                (
+                    "CONTROL DE EFECTOS BPM",
+                    ["BPM_EFFECT"],
+                ),
+            ]
+
+            primera_seccion = True
+            for titulo_seccion, claves in secciones:
+                if not primera_seccion:
+                    contenido += "\n"
+                contenido += f"\n    # {titulo_seccion}\n"
+
+                for clave in claves:
+                    if clave in self.config_data:
+                        contenido += f'    "{clave}": {formatear_valor(self.config_data[clave])},\n'
+
+                primera_seccion = False
+
+            contenido += "}\n"
+
+            # Guardar archivo
+            with open("config.py", "w", encoding="utf-8") as f:
+                f.write(contenido)
+
+            print("✅ config.py guardado correctamente")
+            print(f"📊 Campos guardados: {len(self.config_entries)}")
+
+            messagebox.showinfo("Éxito", "✅ config.py guardado correctamente")
+            return True
 
         except Exception as e:
-            print(f"❌ Error general al guardar: {e}")
+            print(f"❌ Error guardando config.py: {e}")
+            import traceback
+
+            traceback.print_exc()
+
+            # Restaurar backup si existe
+            if Path("config.py.backup").exists():
+                try:
+                    shutil.copy2("config.py.backup", "config.py")
+                    print("✅ Restaurado desde backup")
+                except:
+                    pass
+
+            messagebox.showerror("Error", f"❌ Error guardando config.py:\n\n{str(e)}")
+            return False
+
+    def reparar_config_directo(self):
+        """Repara config.py DIRECTAMENTE con el formato EXACTO del archivo original"""
+        try:
+            print("🔧 Reparando config.py con formato original...")
+
+            # Contenido EXACTO como en el config.py original que me mostraste
+            contenido = """# config.py
+# Configuración principal del juego MetalWar
+# Contiene todos los parámetros ajustables del sistema
+
+GAME_CONFIG = {
+
+    # INFORMACIÓN BÁSICA
+    "GAME_FOLDER_NAME": "CARPETA DEL JUEGO",
+    "GAME_NAME_DISPLAY": "TITULO DEL JUEGO",
+    "WINDOW_CAPTION": "MetalWar - Instalador",
+    "SCROLLER_MESSAGE": ">>> METALWAR LOADING... SYSTEM INITIALIZED >>>",
+    "SUBTITLE_DISPLAY": "",
+    "SPANISH_TEXT": "In Awesome Spanish",
+
+
+    # CONFIGURACIÓN DE VENTANA Y RENDIMIENTO
+    "WINDOW_SIZE": (800, 600),
+    "FPS": 60,
+    "IDLE_TIMEOUT": 20.0,
+
+
+    # CONFIGURACIÓN DE POST-INSTALACIÓN
+    "POST_INSTALL": {
+    "ENABLED": False,
+    "PATCHER_EXE": "example.exe",
+    "TARGET_FILE": "catalog.json",
+    "ARGUMENT": "patchcrc",
+},
+
+
+    # PALETA DE COLORES DEL JUEGO
+    "COLORS": {
+    "BLACK": (10, 10, 18),
+    "WHITE": (255, 255, 255),
+    "BLUE_NEON": (0, 255, 255),
+    "RED_ALERT": (255, 0, 0),
+    "CYAN_NEON": (0, 255, 200),
+    "PEACE_GREEN": (50, 255, 100),
+    "BUTTON_GRAY": (40, 40, 50),
+    "BUTTON_HOVER": (60, 60, 75),
+    "GREEN_SUCCESS": (50, 220, 50),
+    "LIGHT_TEXT": (135, 206, 250),
+    "HUD_BG": (0, 0, 0, 180),
+},
+
+
+    # CONFIGURACIÓN DE AUDIO Y SINCRONIZACIÓN BPM
+    "AUDIO": {
+    "BPM": 128,
+    "MUSIC_OFFSET": 0.12,
+},
+
+
+    # CONTROL DE EFECTOS BPM
+    "BPM_EFFECT": {
+    "IN_NORMAL_MODE": False,
+    "IN_RAVE_MODE": True,
+},
+}
+"""
+
+            # 1. Hacer backup si existe
+            if Path("config.py").exists():
+                shutil.copy2("config.py", "config.py.backup")
+                print("✅ Backup creado: config.py.backup")
+
+            # 2. Guardar el contenido EXACTO
+            with open("config.py", "w", encoding="utf-8") as f:
+                f.write(contenido)
+
+            # 3. Recargar la configuración en memoria
+            self.load_config_file()
+
+            print("✅ config.py reparado con formato EXACTO del original")
+            return True
+
+        except Exception as e:
+            print(f"❌ Error reparando config.py: {e}")
             import traceback
 
             traceback.print_exc()
@@ -2049,6 +2301,21 @@ class MetalWarCompilerApp(ctk.CTk):
             font=ctk.CTkFont(size=16, weight="bold"),
             text_color="#ffffff",
         ).pack(anchor="w", pady=(0, 15))
+
+        # ===== NUEVO: BOTÓN DE ICONOS AL LADO DEL TÍTULO =====
+        title_buttons = ctk.CTkFrame(header_card, fg_color="transparent")
+        title_buttons.pack(side="right", padx=(0, 25))
+
+        ctk.CTkButton(
+            title_buttons,
+            text="🖼️ CREAR ICON.ICO",
+            command=self.generar_icono_desde_logo,
+            width=160,
+            height=35,
+            fg_color="#FF9800",
+            hover_color="#F57C00",
+            font=ctk.CTkFont(size=12, weight="bold"),
+        ).pack(side="right", padx=(10, 0), pady=(5, 50))
 
         btn_icon = ctk.CTkButton(
             left_content,
