@@ -1430,28 +1430,48 @@ class MetalWarCompilerApp(ctk.CTk):
                     valor_procesado = valor_seleccionado == "Sí"
                 elif isinstance(widget, ctk.CTkEntry):
                     raw_valor = widget.get().strip()
-                    if not raw_valor:
+
+                    # ===== REGLAS DE VALIDACIÓN =====
+                    # Campos que PUEDEN estar vacíos (strings opcionales)
+                    campos_vacio_permitido = ["SPANISH_TEXT", "SUBTITLE_DISPLAY"]
+
+                    # ===== VALIDACIÓN =====
+                    # 1. SPANISH_TEXT y SUBTITLE_DISPLAY pueden estar vacíos
+                    if not raw_valor and clave_ruta in campos_vacio_permitido:
+                        print(f"    ✅ {clave_ruta} = '' (vacío permitido)")
+                        valor_procesado = ""
+
+                    # 2. Otros campos vacíos - omitir (mantener valor anterior)
+                    elif not raw_valor:
+                        print(f"    ⚠  {clave_ruta} está vacío - omitiendo cambio")
                         continue
 
-                    # Convertir tipos como en compile.py
-                    try:
-                        if raw_valor.lower() == "true":
-                            valor_procesado = True
-                        elif raw_valor.lower() == "false":
-                            valor_procesado = False
-                        elif raw_valor.startswith("(") and raw_valor.endswith(")"):
-                            valor_procesado = ast.literal_eval(raw_valor)
-                        elif raw_valor.isdigit():
-                            valor_procesado = int(raw_valor)
-                        elif (
-                            raw_valor.replace(".", "", 1).isdigit()
-                            and raw_valor.count(".") == 1
-                        ):
-                            valor_procesado = float(raw_valor)
-                        else:
-                            valor_procesado = raw_valor
-                    except:
-                        valor_procesado = raw_valor
+                    # 3. Campo CON valor - procesar normalmente
+                    else:
+                        # DEBUG para campos importantes
+                        if clave_ruta in ["SPANISH_TEXT", "SUBTITLE_DISPLAY"]:
+                            print(f"    ⭐ {clave_ruta}: '{raw_valor}'")
+
+                        # CONVERSIÓN DE TIPOS
+                        try:
+                            if raw_valor.lower() == "true":
+                                valor_procesado = True
+                            elif raw_valor.lower() == "false":
+                                valor_procesado = False
+                            elif raw_valor.startswith("(") and raw_valor.endswith(")"):
+                                valor_procesado = ast.literal_eval(raw_valor)
+                            elif raw_valor.isdigit():
+                                valor_procesado = int(raw_valor)
+                            elif (
+                                raw_valor.replace(".", "", 1).isdigit()
+                                and raw_valor.count(".") == 1
+                            ):
+                                valor_procesado = float(raw_valor)
+                            else:
+                                valor_procesado = raw_valor
+                        except Exception as e:
+                            print(f"    ⚠  Error convirtiendo {clave_ruta}: {e}")
+                            valor_procesado = raw_valor  # Fallback a string
                 else:
                     continue
 
@@ -3715,6 +3735,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 """
 
+            # Usar repr() para escapar automáticamente
             spec_content += f"""exe = EXE(
     pyz,
     a.scripts,
@@ -3728,7 +3749,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
     a.binaries,
     a.datas,
     [],
-    name='{nombre_exe}',
+    name={repr(nombre_exe)},
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -3745,17 +3766,17 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
             if usar_uac:
                 spec_content += (
-                    f"    uac_admin=True,  # PRIVILEGIOS ADMINISTRATIVOS ACTIVADOS\n"
+                    "    uac_admin=True,  # PRIVILEGIOS ADMINISTRATIVOS ACTIVADOS\n"
                 )
 
             if Path("icon.ico").exists():
-                spec_content += f"    icon='icon.ico',\n"
+                spec_content += f"    icon={repr('icon.ico')},\n"
 
             if Path("splash.png").exists():
-                spec_content += f"    splash='splash.png',\n"
+                spec_content += f"    splash={repr('splash.png')},\n"
 
             if Path("version_info.txt").exists():
-                spec_content += f"    version='version_info.txt',\n"
+                spec_content += f"    version={repr('version_info.txt')},\n"
 
             spec_content += ")\n"
 
