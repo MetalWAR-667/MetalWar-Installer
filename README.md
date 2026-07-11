@@ -259,6 +259,74 @@ Recommended to use the GUI version for speed. The CLI version is in development.
     ```bash
     python Compiler_GUIv2.py
     ```
+	
+## How to use the Compliler_GUIv2.py
+
+🛠️ How to Build a Translation (The Old School Way)
+
+Welcome to the glorious age of software engineering, where adding 1 + 1 still requires a healthy amount of faith and occasionally checking that the calculator isn't accidentally set to hexadecimal.
+
+Fortunately, this version of The METAL_IAS has evolved just enough to automate one of the most tedious steps.
+
+**Step 1 — Feed the Beast**
+
+Copy every file that belongs to your translation into:
+
+TRANSLATION_FILES_TO_PACK/
+
+Subdirectories are supported. Throw everything in there except your hopes and dreams.
+
+**Step 2 — Launch the Compiler**
+
+Run:
+
+python Compiler_GUIV2.py
+
+**Step 3 — Fill in the Details**
+
+Complete the required fields:
+
+Installation path of the game
+Translation title
+Author
+Version
+Any other required metadata
+
+If you leave something important empty, don't blame the compiler. It already has enough existential problems.
+
+**Step 4 — Press Compile**
+
+That's it.
+
+The compiler will automatically:
+
+Pack the contents of TRANSLATION_FILES_TO_PACK into packed.dat.
+Build the final installer.
+Save you from manually renaming ZIP files like it's 1998.
+
+**Step 5 — Experiment**
+
+There is no 300-page manual.
+
+Click buttons.
+
+Break things.
+
+Read the source.
+
+Repeat.
+
+That's how half of us learned programming anyway.
+
+⚠️ Important
+
+If TRANSLATION_FILES_TO_PACK is empty, the compiler will refuse to continue.
+
+Not because it hates you.
+
+Because an installer without files is just a very enthusiastic empty box.
+
+---
  
 ## Warranty
 This installer comes with absolutely no warranty.
@@ -545,6 +613,65 @@ python main.py
 python Compiler_GUIv2.py
 
 ---
+
+## Cómo usar Compiler_GUIV2.py
+
+🛠️ Cómo construir una traducción (A la vieja escuela)
+
+Bienvenido a la gloriosa era de la ingeniería de software, donde sumar **1 + 1** todavía requiere una saludable dosis de fe y, de vez en cuando, comprobar que la calculadora no está accidentalmente en modo hexadecimal.
+
+Por suerte, esta versión de **The METAL_IAS** ha evolucionado lo justo para automatizar uno de los pasos más tediosos.
+
+**Paso 1 — Alimenta a la Bestia**
+
+Copia todos los archivos que formen parte de tu traducción dentro de:
+
+TRANSLATION_FILES_TO_PACK/
+
+Se admiten subdirectorios. Échalo todo ahí dentro, excepto tus esperanzas y tus sueños.
+
+**Paso 2 — Ejecuta el Compilador**
+
+Ejecuta:
+
+python Compiler_GUIV2.py
+
+**Paso 3 — Rellena los Datos**
+
+Completa los campos necesarios:
+
+* Ruta de instalación del juego.
+* Título de la traducción.
+* Autor.
+* Versión.
+* Cualquier otro dato requerido.
+
+Si dejas algún dato importante vacío, no culpes al compilador. Ya tiene suficientes problemas existenciales.
+
+**Paso 4 — Pulsa "Compile"**
+
+Y ya está.
+
+El compilador se encargará automáticamente de:
+
+* Empaquetar el contenido de `TRANSLATION_FILES_TO_PACK` en `packed.dat`.
+* Construir el instalador final.
+* Ahorrarte la maravillosa experiencia de renombrar archivos ZIP manualmente como si todavía estuviéramos en 1998.
+
+**Paso 5 — Experimenta**
+
+Aquí no hay un manual de 300 páginas.
+
+Pulsa botones.
+
+Rompe cosas.
+
+Lee el código fuente.
+
+Repite.
+
+Al fin y al cabo, así es como aprendimos a programar la mitad de nosotros.
+
 
 ## Garantía
 
