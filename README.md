@@ -1,21 +1,29 @@
-███╗   ███╗███████╗████████╗ █████╗ ██╗
-████╗ ████║██╔════╝╚══██╔══╝██╔══██╗██║
-██╔████╔██║█████╗     ██║   ███████║██║
-██║╚██╔╝██║██╔══╝     ██║   ██╔══██║██║
-██║ ╚═╝ ██║███████╗   ██║   ██║  ██║███████╗
-╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+<!--
+███╗   ███╗███████╗████████╗ █████╗ ██╗     ██╗    ██╗ █████╗ ██████╗
+████╗ ████║██╔════╝╚══██╔══╝██╔══██╗██║     ██║    ██║██╔══██╗██╔══██╗
+██╔████╔██║█████╗     ██║   ███████║██║     ██║ █╗ ██║███████║██████╔╝
+██║╚██╔╝██║██╔══╝     ██║   ██╔══██║██║     ██║███╗██║██╔══██║██╔══██╗
+██║ ╚═╝ ██║███████╗   ██║   ██║  ██║███████╗╚███╔███╔╝██║  ██║██║  ██║
+╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+
 
 ###############################################################
 #                                                             #
-#           METALWAR INSTALLER                                #
+#       The METAL_IAS (Absurdly Oversized Installer)          #
 #                                                             #
-#          README v0.0000000001-pre-pre-alpha                #
+#          README v0.0000000001-pre-pre-alpha                 #
 #                                                             #
-#  Certified Overengineered Since Last Tuesday               #
+#        Certified Overengineered Since Last Tuesday          #
 #                                                             #
 ###############################################################
+-->
 
-ENGLISH
+[🇬🇧 English](#english) · [🇪🇸 Español](#espanol)
+
+---
+
+## ENGLISH
 =======
 
 Congratulations.
@@ -219,19 +227,24 @@ Recommended to use the GUI version for speed. The CLI version is in development.
     ```bash
     git clone https://github.com
     cd metalwar-installer
-Install dependencies:
+    ```
 
-bash
-pip install pygame customtkinter pillow pyttsx3 numpy
-Run in development mode:
+2.  **Install dependencies:**
+    ```bash
+    pip install pygame customtkinter pillow pyttsx3 numpy
+    ```
 
-bash
-python main.py
-Compile your own installer:
+3.  **Run in development mode:**
+    ```bash
+    python main.py
+    ```
 
-bash
-python Compiler_GUIv2.py
-Warranty
+4.  **Compile your own installer:**
+    ```bash
+    python Compiler_GUIv2.py
+    ```
+ 
+## Warranty
 This installer comes with absolutely no warranty.
 Except one.
 
@@ -241,59 +254,49 @@ You'll probably find at least one thing that makes you say:
 "Huh... that's actually clever."
 Finding which one is left as an exercise for the reader. 🎸
 
-Workshop Log
+**Workshop Log:**
 
-v1.0 - This WAR is OVER!
+| Version | Workshop Notes |
+|---------|----------------|
+| **v1.0** | **This WAR is OVER!** — The installer is stable. The code has been tamed. |
+| **v0.8** | **Explosive Finale** — Every spectacular ending needs a detonation. Added X-Wing fighters doing barrel rolls on the closing screen. Why? Because we could. |
+| **v0.6** | **Enterprise Star Trek Mode** — I watched Star Trek on TV, fell in love with the starfield, and the next day I was coding it. Now it's your visual problem. |
+| **v0.5** | **Quantum Leap** — It works better now and executes three times as many ridiculous tasks with half the effort. |
+| **v0.3** | **The "Germin-IA" Incident** — I felt lonely coding at 3 a.m. I programmed an experimental chatbot based on dog barks called Germin-IA. It doesn't compile well, it doesn't solve doubts, but it says absurd genius things! |
+| **v0.2** | **The Miracle** — It's still running. Nobody knows why. Don't touch the power cable. |
+| **v0.1** | **First Ignition** — It worked on the first try. This was considered highly suspicious by the mechanic team. Checking logs for witchcraft. |
 
-The installer is stable. The code has been tamed.
+## 📻 Field Reports
 
-v0.8 - Explosive Finale
+All quotes published here are real. None have been edited to make them sound less funny. Some have been lightly edited for readability.
 
-Every spectacular ending needs a detonation. Added X-Wing fighters doing barrel rolls on the closing screen. Why? Because we could.
+> *"It was quite a scare when, after installing the translation, the caps lock and num lock started turning on and off by themselves. Ignoring that, the translation is super well done. There are a few things still in English, but with the descriptions saying what they're about, it's honestly enough."* — **Carzdroid**
 
-v0.6 - Enterprise Star Trek Mode
+> *"The fact that the file is a .exe makes me distrust it. Plus, VirusTotal flagged it as a possible trojan risk when scanning the .exe. In the end, I didn't test it, but just so the rest of you are aware."* — **Sandov Metal**  
+> **Metal_TrollKing replies:** "I'm sure if you know how to use VirusTotal, you also know how to use a VM or a sandbox to extract the files. For everyone else, it stays as an exe. For convenience and according to the author's vision. Cheers."
 
-I watched Star Trek on TV, fell in love with the starfield, and the next day I was coding it. Now it's your visual problem.
+> *"If you're ever in Alcorcón, give me a heads-up and I'll suck you off."* — **Artorias**  
+> **Metal_TrollKing replies:** "I appreciate the gesture, but my installer already has enough hip movement with that barrel roll of the stars." 🤘🎸
 
-v0.5 - Quantum Leap
+> *"Thank you so much, legend, for going through the trouble."* — **luferas**  
+> **Metal_TrollKing replies:** "You're welcome, buddy. This isn't an installer, it's a war cry. And you answered the call."
 
-It works better now and executes three times as many ridiculous tasks with half the effort.
+> *"Could you make a tutorial for dummies (like me) on how to install it? I got it for free on Epic."* — **wolfratable**  
+> **Metal_TrollKing replies:** "One button, wolfratable. There's only one. If you press it and nothing happens, the problem isn't the button."
 
-v0.3 - The "Germin-IA" Incident
+> *"I get a screen with the Conan music playing, but I don't know what to do next."* — **@albertol2371**  
+> **Metal_TrollKing replies:** "That screen is the moment of truth. Crom won't help you. The button will."
 
-I felt lonely coding at 3 a.m. I programmed an experimental chatbot based on dog barks called Germin-IA. It doesn't compile well, it doesn't solve doubts, but it says absurd genius things!
+> *"Virus detected popped up on me!"* — **@eze86ruiz**  
+> **Metal_TrollKing replies:** "Antiviruses need attention too. Sometimes they make up problems just to feel useful. Ignore the warning."
 
-v0.2 - The Miracle
+> *"Excuse me, could you upload a tutorial for the Epic version that was given away recently? I'm not a computer genius and I need step-by-step instructions to understand. Never mind what I said, praise be, and also let people know the translation program is a link through Steam to another place lol."* — **HCreps**  
+> **Metal_TrollKing replies:** "The tutorial is the installer itself. If it works, don't touch it. If it doesn't work, it's not you, it's the code."
 
-It's still running. Nobody knows why. Don't touch the power cable.
+> *"Everything is really nice, but HOW DO YOU TRANSLATE IT?"* — **@haza-play**  
+> **Metal_TrollKing replies:** Press the BUTTON. There's only one. One to rule them all and bind them in the darkness.
 
-v0.1 - First Ignition
-
-It worked on the first try. This was considered highly suspicious by the mechanic team. Checking logs for witchcraft.
-
-📻 Field Reports
-
-All quotes published here are real. None have been edited to sound less funny. Some have been slightly edited for readability.
-
-"It was a huge scare when the translation started installing and Caps Lock and Num Lock started turning on and off, ignoring that, the translation is really well done, there are some things in English but with the descriptions saying what they are about it's enough really" - Carzdroid
-
-"The fact that it's a .exe file makes me distrust it, also Virus Total gave me a possible Trojan risk when reading the .exe, in the end I didn't test it but just so others know" - Sandov Metal responds: :steamthumbsup:, surely if you know how to use Virus Total, you know how to use a VM or a virtualized space to extract the files, for others it remains an .exe. For convenience and the author's vision. Regards
-
-If you pass by Alcorcon let me know and I'll suck you off. - Artorias
-
-Many thanks mate for bothering. - luferas
-
-Could you make a tutorial for dummies (like me) on how to install it? I got it as a gift from Epic - wolfratable
-
-A screen appears with Conan's music, but I don't know what to do next - @albertol2371
-
-Virus detected it popped up! - @eze86ruiz
-
-Sorry, could you upload a tutorial for the Epic version they gave away recently? I'm not a computer genius and I need steps to understand, I forgot what I said, praised be, and also warn that the translation program is a link through Steam to another place xd -HCreps
-
-VERY PRETTY BUT HOW DO YOU TRANSLATE IT? - @haza-play/Metaltrollking say: PRESS THE BUTTON – THERE'S ONLY ONE TO CONTROL THEM ALL AND PLUNGE THEM INTO DARKNESS.
-
-ESPAÑOL
+## ESPAÑOL
 ========
 
 █████████████████████████████████████████████████████████████████████████
@@ -302,7 +305,7 @@ Felicidades.
 
 De alguna manera, has acabado leyendo la documentación de un instalador de Windows.
 Esto ya plantea varias preguntas.
-Se trata principalmente de tus decisiones de vida.
+Algunas se tratan principalmente de tus decisiones en vida.
 
 "No estoy construyendo un instalador. Estoy reaprendiendo a programar."
 
@@ -324,221 +327,393 @@ Lo aburrido.
 
 Lo necesario.
 
-MetalWar Installer no es solo un instalador de traducciones; es un tributo a la Demoscene de los 90. Un motor de despliegue genérico diseñado para distribuir parches y traducciones fanmade con una estética agresiva, visuales 3D en tiempo real y sincronización musical perfecta.
+📝 Versión alternativa (más directa)
+El METAL_IAS (Instalador Absurdamente Sobredimensionado) es un tributo a la Demoscene de los 90: un motor de despliegue genérico para distribuir parches y traducciones fanmade, con estética agresiva, visuales 3D en tiempo real y sincronización musical perfecta.
 
 "Porque si vamos a distribuir la traducción fanmade de un juego, vamos a hacerlo con estilo, y dos cojones.🤘"
 
-¿Por qué publicar algo tan pequeño?
-Todo el mundo enseña la catedral acabada.
-Casi nadie muestra los andamios.
-Este repositorio son los andamios.
-Verás cosas bien hechas.
-Verás cosas que arreglo tres commits después.
-Es parte del proceso.
-Aprender deja huellas.
+## ¿Por qué publicar algo tan pequeño?
 
-No las borro.
+> Todo el mundo enseña la catedral acabada.  
+> Casi nadie muestra los andamios.  
+>
+> Este repositorio son los andamios.  
+>
+> Verás cosas bien hechas.  
+> Verás cosas que arreglo tres commits después.  
+>
+> Es parte del proceso.  
+> Aprender deja huellas.  
+>
+> No las borro.  
 
-Misión
-Convertir un instalador minúsculo en un campo de pruebas para aprender desarrollo profesional.
-No con tutoriales interminables.
-Construyendo.
-Rompiendo.
-Arreglando.
-Escribiendo sobre ello.
+---
 
-Y repitiendo.
+## Misión
 
-Arquitectura
+Convertir un instalador minúsculo en un campo de pruebas para aprender desarrollo profesional.  
+
+**No** con tutoriales interminables.  
+
+**Construyendo.**  
+**Rompiendo.**  
+**Arreglando.**  
+**Escribiendo sobre ello.**
+**Y repitiendo.**
+
+## Arquitectura
+
 El instalador ha sido cuidadosamente diseñado siguiendo décadas de
 mejores prácticas de la industria.
 
-Algunas de ellas.
-Las importantes.
-Bueno...
+Algunas de ellas.  
+Las importantes.  
+Bueno...  
 Más o menos. 🎸
 
 ¿Qué es una buena práctica?
 
-Misión Secundaria
+---
+
+## Misión Secundaria
+
 Aprender Git de verdad.
 
 No "conocer lo justo para no cagarla, hasta que acabe ocurriendo."
 
 Este repo será mi campo de entrenamiento para:
 
-commits con sentido
-ramas
-fusiones
-etiquetas
-lanzamientos
-pull requests
-documentación
-organización de proyectos
+- commits con sentido  
+- ramas  
+- fusiones  
+- etiquetas  
+- lanzamientos  
+- pull requests  
+- documentación  
+- organización de proyectos  
 
-Estado del README
+---
+
+## Estado del README
+
 Este README está vivo.
 
 Evolucionará tanto como el código.
 
 Quizá más.
 
-Si ves cambios raros...
+Si ves cambios raros...  
 Estás viendo a alguien aprender Markdown treinta años después de escribir documentación en texto plano.
 
-Algunos empiezan con Markdown.
-Otros con arte ASCII.
+Algunos empiezan con Markdown.  
+Otros con arte ASCII.  
 
 La vida es así.
 
-Filosofía
+## Filosofía
+
 Los programadores viejos tenían una manía.
 
-En lugar de preguntar "¿Puede el ordenador hacer esto?"
-preguntaban "¿Cómo puedo convencer al ordenador de que haga esto?"
+En lugar de preguntar *"¿Puede el ordenador hacer esto?"*  
+preguntaban *"¿Cómo puedo convencer al ordenador de que haga esto?"*
 
 Esa mentalidad nunca dejó de molar.
 
-La optimización no es obsesión. Es curiosidad.
-La documentación no es burocracia. Es respeto por tu yo futuro.
+La optimización no es obsesión. Es curiosidad.  
+La documentación no es burocracia. Es respeto por tu yo futuro.  
 El código limpio no es postureo. Es amabilidad.
 
-Aviso
+---
+
+## Aviso
+
 Este repositorio contiene niveles peligrosos de entusiasmo.
 
 Posibles efectos secundarios:
 
-reorganizar carpetas que ya estaban bien
-renombrar variables porque "quedan mejor"
-añadir comentarios que nadie pidió
-reescribir documentación a las 2 a.m.
-pasar más tiempo en el README que en el código
+- reorganizar carpetas que ya estaban bien  
+- renombrar variables porque "quedan mejor"  
+- añadir comentarios que nadie pidió  
+- reescribir documentación a las 2 a.m.  
+- pasar más tiempo en el README que en el código  
 
 Todo normal, puedes continuar tu viaje.
 
 ## 🕹️ Características Principales (Sobreingeniería Certificada)
 💎 Visuales Demoscene (Porque el rendimiento es temporal, pero el estilo es eterno)
-Starfield 3D Fuera de Control: Un campo de estrellas con rotación de cámara tipo barrel roll y efecto warp reactivo al BPM que consume más CPU de la que la NASA usó para llegar a la Luna.
+## 🕹️ Características Principales (Sobreingeniería Certificada)
 
-Visualizadores Adaptativos: El motor gráfico interroga al codec de audio en tiempo real. Si cambias la pista tracker, el sistema conmuta sus matrices de renderizado sobre la marcha.
+### 💎 Visuales Demoscene (Porque el rendimiento es temporal, pero el estilo es eterno)
 
-Rave Mode (Headbang): Un sistema de estrés visual interactivo. Si el usuario hace clic como un loco, el motor entra en sobrecarga y dispara los efectos visuales ignorando cualquier principio de ergonomía.
+**Starfield 3D Fuera de Control**  
+Un campo de estrellas con rotación de cámara tipo *barrel roll* y efecto *warp* reactivo al BPM que consume más CPU de la que la NASA usó para llegar a la Luna.
 
-Geometric Transformer: Renderizado de polígonos tridimensionales (Esferas y Toroides) calculados a base de pura trigonometría a pelo. Sin hilos, sin aceleración por hardware, sufriendo en el procesador principal como en 1993.
+**Visualizadores Adaptativos**  
+El motor gráfico interroga al codec de audio en tiempo real. Si cambias la pista tracker, el sistema conmuta sus matrices de renderizado sobre la marcha.
 
-Efecto CRT & Glitch: Simulación de monitor de tubo de rayos catódicos con scanlines procedurales y aberración cromática para recordarte que los monitores planos son una moda pasajera.
+**Rave Mode (Headbang)**  
+Un sistema de estrés visual interactivo. Si el usuario hace clic como un loco, el motor entra en sobrecarga y dispara los efectos visuales ignorando cualquier principio de ergonomía.
 
-Tactical HUD: Sistema de targeting con suavizado matemático SmoothStep. No sirve para nada en un instalador, pero queda espectacular.
+**Geometric Transformer**  
+Renderizado de polígonos tridimensionales (Esferas y Toroides) calculados a base de pura trigonometría a pelo. Sin hilos, sin aceleración por hardware, sufriendo en el procesador principal como en 1993.
 
-🔊 Motor de Audio (Altas Revoluciones)
-Sincronización BPM: Un reloj musical interno que obliga al motor visual a bailar al ritmo del bit de forma estricta.
+**Efecto CRT & Glitch**  
+Simulación de monitor de tubo de rayos catódicos con scanlines procedurales y aberración cromática para recordarte que los monitores planos son una moda pasajera.
 
-Soporte Tracker Nativo: Reproducción directa de módulos clásicos de la Amiga (.mod, .xm, .it). Si no sabes qué es el FastTracker II, te falta taller. También reproduce .mp3 si te da pereza buscar música de verdad.
+**Tactical HUD**  
+Sistema de targeting con suavizado matemático *SmoothStep*. No sirve para nada en un instalador, pero queda espectacular.
 
-Robotic TTS: Un sintetizador de voz integrado con delay estéreo que te habla como si el ordenador estuviera cobrando vida para recriminarte tus decisiones operativas.
+---
 
-🛠️ Hardware Hijacking (Intrusión Directa)
-Keyboard LED FX: Control directo y violento del bus de tu teclado físico. Ponemos a parpadear los LEDs de Caps, Num y Scroll Lock en modo Coche Fantástico mientras se copian los archivos. Si tu teclado mecánico costó 200 euros, reza.
+### 🔊 Motor de Audio (Altas Revoluciones)
 
-Deep Path Discovery: Localización agresiva de directorios mediante el escaneo de manifiestos ocultos en el registro de Windows de Steam y Epic Games. Encontramos el juego aunque lo hayas escondido en una partición prohibida.
+**Sincronización BPM**  
+Un reloj musical interno que obliga al motor visual a bailar al ritmo del bit de forma estricta.
 
-📂 Arquitectura y Desglose por Módulos (Ajuste de Tuercas)
+**Soporte Tracker Nativo**  
+Reproducción directa de módulos clásicos de la Amiga (`.mod`, `.xm`, `.it`). Si no sabes qué es el FastTracker II, te falta taller. También reproduce `.mp3` si te da pereza buscar música de verdad.
+
+**Robotic TTS**  
+Un sintetizador de voz integrado con delay estéreo que te habla como si el ordenador estuviera cobrando vida para recriminarte tus decisiones operativas.
+
+---
+
+### 🛠️ Hardware Hijacking (Intrusión Directa)
+
+**Keyboard LED FX**  
+Control directo y violento del bus de tu teclado físico. Ponemos a parpadear los LEDs de `Caps`, `Num` y `Scroll Lock` en modo *Coche Fantástico* mientras se copian los archivos. Si tu teclado mecánico costó 200 euros, reza.
+
+**Deep Path Discovery**  
+Localización agresiva de directorios mediante el escaneo de manifiestos ocultos en el registro de Windows de **Steam** y **Epic Games**. Encontramos el juego aunque lo hayas escondido en una partición prohibida.
+
+## 📂 Arquitectura y Desglose por Módulos (Ajuste de Tuercas)
+
 Cambiemos la tabla para que se note el peso del silicio en cada script:
 
-Módulo	Función en el Chasis
-main.py	El Cigüeñal. Bucle de eventos principal, sincronización con el MusicClock y la máquina de estados que evita que todo explote.
-config.py	El Octanaje. Parámetros en bruto, colores neón que dañan la retina y constantes matemáticas inmutables.
-audio.py	La Admisión de Aire. Carga de módulos tracker, reservas de canales de audio a bajo nivel y la voz del robot.
-effects.py	La Inyección de Óxido Nitroso. Starfield, transformaciones 3D a base de senos y cosenos, y el motor de aberración CRT.
-ui.py	La Carrocería. Renderizado del logo ASCII, el Tactical HUD y el volcado de memoria en hexadecimal para asustar a los niños.
-installer.py	Los Pistones. Hilos de ejecución en paralelo para mover los archivos mientras el teclado parpadea y la música ruge.
-utils.py	La Caja de Herramientas. Funciones sucias pero necesarias, rutas de recursos y el generador de fallos procedurales.
-Compiler_GUIv2.py	La Prensa Hidráulica. Generador de ejecutables monolíticos OneFile usando PyInstaller a lo bestia.
-🚀 El Compilador (Fábrica de OneFiles)
-El proyecto incluye dos herramientas de compilación para empaquetar el proyecto en un único .exe:
+| Módulo | Función en el Chasis |
+|--------|----------------------|
+| **main.py** | **El Cigüeñal.** Bucle de eventos principal, sincronización con el MusicClock y la máquina de estados que evita que todo explote. |
+| **config.py** | **El Octanaje.** Parámetros en bruto, colores neón que dañan la retina y constantes matemáticas inmutables. |
+| **audio.py** | **La Admisión de Aire.** Carga de módulos tracker, reservas de canales de audio a bajo nivel y la voz del robot. |
+| **effects.py** | **La Inyección de Óxido Nitroso.** Starfield, transformaciones 3D a base de senos y cosenos, y el motor de aberración CRT. |
+| **ui.py** | **La Carrocería.** Renderizado del logo ASCII, el Tactical HUD y el volcado de memoria en hexadecimal para asustar a los niños. |
+| **installer.py** | **Los Pistones.** Hilos de ejecución en paralelo para mover los archivos mientras el teclado parpadea y la música ruge. |
+| **utils.py** | **La Caja de Herramientas.** Funciones sucias pero necesarias, rutas de recursos y el generador de fallos procedurales. |
+| **Compiler_GUIv2.py** | **La Prensa Hidráulica.** Generador de ejecutables monolíticos OneFile usando PyInstaller a lo bestia. |
 
-Compiler_GUIv2.py: Interfaz moderna en customtkinter con generador de Splash Screens, editor de metadatos y conversión de iconos.
+---
 
-compilador.py (CLI): Versión de consola con colores ANSI para debugging y automatización.
+## 🚀 El Compilador (Fábrica de OneFiles)
+
+El proyecto incluye **dos herramientas de compilación** para empaquetar el proyecto en un único `.exe`:
+
+- **Compiler_GUIv2.py**: Interfaz moderna en `customtkinter` con generador de Splash Screens, editor de metadatos y conversión de iconos.
+- **compilador.py (CLI)**: Versión de consola con colores ANSI para debugging y automatización.
 
 Recomendable usar la versión GUI para ir rápido. La versión CLI está en desarrollo.
 
-🛠️ Instalación y Uso
-Clonar el repositorio:
+---
 
-bash
+
+## 🛠️ Instalación y Uso
+
+### 1. Clonar el repositorio
 git clone https://github.com
 cd metalwar-installer
-Instalar dependencias:
 
-bash
+### 2. Instalar dependencias
 pip install pygame customtkinter pillow pyttsx3 numpy
-Ejecutar en modo desarrollo:
 
-bash
+### 3. Ejecutar en modo desarrollo
 python main.py
-Compilar tu propio instalador:
 
-bash
+### 4. Compilar tu propio instalador
 python Compiler_GUIv2.py
-Garantía
-Este instalador no tiene absolutamente ninguna garantía.
+
+---
+
+## Garantía
+
+Este instalador no tiene absolutamente ninguna garantía.  
 Excepto una.
 
-Si abres el código fuente...
+Si abres el código fuente...  
 Probablemente encontrarás al menos una cosa que te haga decir:
 
 "Eh... eso sí que es ingenioso."
+
 Descubrir cuál es se deja como ejercicio para el lector. 🎸
 
-Workshop Log
+## Workshop Log
 
-v1.0 - This WAR is OVER!
-
+**v1.0 - This WAR is OVER!**  
 El instalador es estable. El código ha sido domado.
 
-v0.8 - Explosive Finale
-
+**v0.8 - Explosive Finale**  
 Cada final espectacular necesita una detonación. Añadidos cazas X-Wing haciendo barrel rolls en la pantalla de cierre. ¿Por qué? Porque podíamos.
 
-v0.6 - Enterprise Star Trek Mode
-
+**v0.6 - Enterprise Star Trek Mode**  
 Vi Star Trek por la tele, me enamoré del campo de estrellas y al día siguiente estaba picado en el código. Ahora es tu problema visual.
 
-v0.5 - Quantum Leap
-
+**v0.5 - Quantum Leap**  
 Ahora funciona mejor y ejecuta tareas el triple de ridículas con la mitad de esfuerzo.
 
-v0.3 - The "Germin-IA" Incident
+**v0.3 - The "Germin-IA" Incident**  
+Me sentía solo picando a las tres de la madrugada. Programé un chatbot experimental basado en ladridos de perro llamado Germin-IA. No compila bien, no resuelve dudas, ¡pero dice genialidades absurdas!
 
-Me sentía solo picando a las tres de la madrugada. Programé un chatbot experimental basado en ladridos de perro llamado Germin-IA. No compila bien, no resuelve dudas, ¡pero dice genialidades absurdas!.
-
-v0.2 - The Miracle
-
+**v0.2 - The Miracle**  
 Sigue funcionando. Nadie sabe por qué. No toques el cable de alimentación.
 
-v0.1 - First Ignition
-
+**v0.1 - First Ignition**  
 Funcionó a la primera. Esto fue considerado altamente sospechoso por el equipo de mecánicos. Revisando registros en busca de brujería.
 
-📻 Field Reports
+## 📻 Field Reports
 
-Todas las citas aquí publicadas son reales. Ninguna ha sido editada para que suene menos graciosa. Algunos han sido ligeramente editados para facilitar su lectura.
+Todas las citas aquí publicadas son reales. Ninguna ha sido editada para que suene menos graciosa. Algunas han sido ligeramente editadas para facilitar su lectura.
 
-"Fue un susto tremendo cuando al instalar la traducción empezó a activarse y desactivarse el caps lock y el num lock, ignorando eso, la traducción está super bien hecha, hay algunas cositas en inglés pero con las descripciones diciendo de que se tratan es suficiente la verdad" - Carzdroid
+> *"Fue un susto tremendo cuando al instalar la traducción empezó a activarse y desactivarse el caps lock y el num lock, ignorando eso, la traducción está super bien hecha, hay algunas cositas en inglés pero con las descripciones diciendo de que se tratan es suficiente la verdad"* — **Carzdroid**
 
-"Que sea .exe el archivo me genera desconfianza, además virus total me tiró posible riesgo de troyano al leer el .exe, al final no lo probé pero solo para que lo tengan en cuenta los demás" - Sandov Metal responde: :steamthumbsup:, seguro que si sabes usar virustotal, sabes usar una vm o un espacio virtualizado para extraer los archivos, para los demás se queda como un exe. Por comodidad y por visión del autor. Un saludo
+> *"Que sea .exe el archivo me genera desconfianza, además virus total me tiró posible riesgo de troyano al leer el .exe, al final no lo probé pero solo para que lo tengan en cuenta los demás"* — **Sandov Metal**  
+> **Metal_TrollKing responde:** seguro que si sabes usar virustotal, sabes usar una vm o un espacio virtualizado para extraer los archivos. Para los demás se queda como un exe. Por comodidad y por visión del autor. Un saludo.
 
-Si pasas por alcorcon avisa y te la chupo. - Artorias
+> *"Si pasas por Alcorcón avisa y te la chupo."* — **Artorias**
+> **Metal_TrollKing responde:**	"Aprecio el gesto, pero mi instalador ya tiene suficiente movimiento de caderas con el barrel roll de las estrellas." 🤘🎸
 
-Muchísimas gracias crack por molestarte. - luferas
+> *"Muchísimas gracias crack por molestarte."* — **luferas**
+> **Metal_TrollKing responde:** "De nada, compi. Esto no es un instalador, es un grito de guerra. Y tú has respondido."
 
-Podrías hacer un tuto para tontos (como yo) de como instalarlo? Lo tengo de regalo de epic - wolfratable
+> *"Podrías hacer un tuto para tontos (como yo) de cómo instalarlo? Lo tengo de regalo de Epic."* — **wolfratable**
+> **Metal_TrollKing responde:** "Un botón, wolfratable. Solo hay uno. Si lo pulsas y no pasa nada, el problema no es el botón."
 
-Me sale una pantalla con la música de Conan, pero no sé qué hay que hacer después - @albertol2371
+> *"Me sale una pantalla con la música de Conan, pero no sé qué hay que hacer después."* — **@albertol2371**
+> **Metal_TrollKing responde:** "Esa pantalla es el momento de la verdad. Crom no te va a ayudar. El botón, sí."
 
-virus detectado me salto! - @eze86ruiz
+> *"Virus detectado me saltó!"* — **@eze86ruiz**
+> **Metal_TrollKing responde:**"Los antivirus también necesitan atención. A veces se inventan problemas para sentirse útiles. Pasa del aviso."
 
-disculpe no podrá subir un tutorial para la versión de epic que regalo hace poco? no soy un genio de la informática y necesito pasos para entender, olvide lo que dije alabado sea y de paso avise que el programa de traducción es un link a través de steam a otro lado xd -HCreps
+> *"Disculpe, ¿no podrá subir un tutorial para la versión de Epic que regalaron hace poco? No soy un genio de la informática y necesito pasos para entender. Olvide lo que dije, alabado sea, y de paso avise que el programa de traducción es un link a través de Steam a otro lado xd."* — **HCreps**
+> **Metal_TrollKing responde:**"El tutorial es el propio instalador. Si funciona, no lo toques. Si no funciona, no eres tú, es el código."
+> *"Muy lindo todo pero, ¿CÓMO SE TRADUCE?"* — **@haza-play**  
+> **Metal_TrollKing responde:** Pulsa el BOTÓN. Solo hay uno. Uno para controlarlos a todos y sumirlos en las tinieblas.
 
-MUY LINDO TODO PERO, CÓMO SE TRADUCE ?- @haza-play/Metal say: PRESS THE BUTTON – THERE'S ONLY ONE TO CONTROL THEM ALL AND PLUNGE THEM INTO DARKNESS.
+--------------------------------------------------------------------------------
+
+                                C R E D I T S
+
+--------------------------------------------------------------------------------
+
+      CODE ............................................. MetalWar
+
+      QUESTIONABLE IDEAS ............................... Lumen
+
+      AUTOMATED MADNESS ................................. Jules
+
+      MATHEMATICAL SORCERY .............................. Gemini
+
+      BUGS ............................................. Definitely not us.
+
+      MORE BUGS ........................................ Probably us.
+
+      COFFEE ........................................... Industrial quantities.
+
+      SOUNDTRACK ....................................... Whatever was playing
+                                                         at 03:17 AM.
+
+--------------------------------------------------------------------------------
+
+                               G R E E T I N G S
+
+--------------------------------------------------------------------------------
+
+      Respect to...
+
+      • Everyone who still remembers what a 5¼" floppy smells like.
+      • The tracker musicians who somehow fitted emotions into 64 KB.
+      • The coders who optimized first and slept later.
+      • The pixel artists who counted every single colour.
+      • The documentation writers.
+        (Yes... all three of you.)
+
+      • Everyone who still opens a README before downloading binaries.
+      • Everyone who believes software can have personality.
+
+--------------------------------------------------------------------------------
+
+                           S P E C I A L   T H A N K S
+
+--------------------------------------------------------------------------------
+
+      To every old keyboard that survived
+      one more late-night coding session.
+
+      To CRT monitors...
+      for teaching us what scanlines really looked like.
+
+      To every debugger that patiently watched us
+      blame perfectly innocent variables.
+
+      To every "temporary fix"
+      that somehow celebrated its tenth birthday.
+
+--------------------------------------------------------------------------------
+
+                               D I S C L A I M E R
+
+--------------------------------------------------------------------------------
+
+      No corporate buzzwords were harmed during development.
+
+      No blockchain was required.
+
+      No NFTs escaped into production.
+
+      No cloud services were summoned.
+
+      No microservices were unnecessarily fragmented.
+
+      AI was used responsibly.
+
+      Common sense was occasionally optional.
+
+--------------------------------------------------------------------------------
+
+                           F I N A L   W O R D S
+
+--------------------------------------------------------------------------------
+
+      If this installer made you smile...
+
+      mission accomplished.
+
+      If it also made your RGB keyboard start
+      a spontaneous heavy metal concert...
+
+      that was absolutely intentional.
+
+--------------------------------------------------------------------------------
+
+                        SEE YA IN THA SCENE.
+
+                                 \m/
+
+-------------------------------------------------------------------------
+
+If you are reading this...
+Congratulations.
+
+You are one of the five people on Earth
+who actually reads README files.
+
+The installer salutes you.
+
+------------------------------------------------------------------------- 
+Last known status:
+
+☑ Coffee available
+☑ Repository alive
+☑ Scope under control
+☑ Architecture intact
+☑ Sanity...
+Checking...
+ERROR 0xDEADBEEF
+Unable to locate.
