@@ -228,10 +228,19 @@ Module | Function in the Chassis
 
 ## 🚀 The Compiler (OneFile Factory)
 
-The project includes **two compilation tools** to package the project into a single `.exe`:
+The project includes two tools for packaging the whole thing into a single `.exe`:
 
-1.  **Compiler_GUIv2.py**: Modern interface in `customtkinter` with Splash Screen generator, metadata editor, and icon converter.
-2.  **compilador.py (CLI)**: Console version with ANSI colors for debugging and automation.
+* **`Compiler_GUIV2.py`** — The belle of the ball. A modern GUI built with `customtkinter`, featuring a Splash Screen generator, metadata editor, icon conversion, and all the bells and whistles added over time. If you want to compile a patch, use this one.
+
+* **`Compiler.py` (CLI)** — The grumpy old-timer of the family. It still works, complains very little, and keeps its glorious ANSI colors... but it's been living off past glories for a while now.
+
+> ⚠️ **Notice for the brave, archaeologists, and other curious specimens**
+>
+> The CLI version is **no longer receiving updates**. If you notice it's missing some modern features, it's not a bug... it's early retirement.
+>
+> Feel free to ignore it and use **`Compiler_GUIV2.py`** instead, which is where all new development happens.
+>
+> If you still choose to use the console version... well, nobody said living dangerously was a bad idea.
 
 Recommended to use the GUI version for speed. The CLI version is in development.
 
@@ -587,12 +596,20 @@ Cambiemos la tabla para que se note el peso del silicio en cada script:
 
 ## 🚀 El Compilador (Fábrica de OneFiles)
 
-El proyecto incluye **dos herramientas de compilación** para empaquetar el proyecto en un único `.exe`:
+El proyecto incluye dos herramientas para empaquetar todo el invento en un único `.exe`:
 
-- **Compiler_GUIv2.py**: Interfaz moderna en `customtkinter` con generador de Splash Screens, editor de metadatos y conversión de iconos.
-- **compilador.py (CLI)**: Versión de consola con colores ANSI para debugging y automatización.
+* **`Compiler_GUIV2.py`** — La niña bonita del proyecto. Interfaz moderna con `customtkinter`, generador de *Splash Screens*, editor de metadatos, conversión de iconos y todas las chucherías que se han ido añadiendo con el paso del tiempo. Si quieres compilar un parche, usa esta.
 
-Recomendable usar la versión GUI para ir rápido. La versión CLI está en desarrollo.
+* **`Compiler.py` (CLI)** — El viejo cascarrabias de la familia. Sigue funcionando, protesta poco y conserva sus gloriosos colores ANSI... pero lleva una temporada viviendo de los recuerdos.
+
+> ⚠️ **Aviso para valientes, arqueólogos y otros especímenes curiosos**
+>
+> La versión CLI ya **no recibe actualizaciones**. Si detectas que le falta alguna característica moderna, no es un bug... es jubilación anticipada.
+>
+> Puedes ignorarla tranquilamente y utilizar **`Compiler_GUIV2.py`**, que es donde se desarrolla todo el trabajo nuevo.
+>
+> Si aun así decides usar la versión de consola... bueno, nadie dijo que vivir peligrosamente fuera mala idea.
+
 
 ---
 
