@@ -562,7 +562,7 @@ Sistema de targeting con suavizado matemático *SmoothStep*. No sirve para nada 
 Un reloj musical interno que obliga al motor visual a bailar al ritmo del bit de forma estricta.
 
 **Soporte Tracker Nativo**  
-Reproducción directa de módulos clásicos de la Amiga (`.mod`, `.xm`, `.it`). Si no sabes qué es el FastTracker II, te falta taller. También reproduce `.mp3` si te da pereza buscar música de verdad.
+Reproducción directa de módulos clásicos de Amiga... no, no de esa amiga, del Commodore amiga (.mod, .xm, .it). Si no sabes qué es el FastTracker II, te falta calle. También reproduce .mp3 por si te da pereza buscar música de verdad.
 
 **Robotic TTS**  
 Un sintetizador de voz integrado con delay estéreo que te habla como si el ordenador estuviera cobrando vida para recriminarte tus decisiones operativas.
