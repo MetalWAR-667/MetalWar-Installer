@@ -456,8 +456,6 @@ Posibles efectos secundarios:
 Todo normal, puedes continuar tu viaje.
 
 ## 🕹️ Características Principales (Sobreingeniería Certificada)
-💎 Visuales Demoscene (Porque el rendimiento es temporal, pero el estilo es eterno)
-## 🕹️ Características Principales (Sobreingeniería Certificada)
 
 ### 💎 Visuales Demoscene (Porque el rendimiento es temporal, pero el estilo es eterno)
 
