@@ -3450,6 +3450,126 @@ GAME_CONFIG = {
         self.compile_console.tag_config("info", foreground="#2196F3")
         self.compile_console.configure(state="disabled")
 
+    def _crear_packed_dat(self):
+        """
+        Valida, comprime y genera el archivo packed.dat desde TRANSLATION_FILES_TO_PACK.
+        Retorna True si todo es correcto, False en caso de error o carpeta vacía.
+        """
+        import zipfile
+        import os
+        from pathlib import Path
+        import traceback
+        from tkinter import messagebox
+
+        self.escribir_en_consola("📁 Validando contenido de TRANSLATION_FILES_TO_PACK...\n", "info")
+        folder_path = Path("TRANSLATION_FILES_TO_PACK")
+
+        # Asegurar que la carpeta existe
+        if not folder_path.exists():
+            try:
+                folder_path.mkdir(parents=True, exist_ok=True)
+                # Crear .gitkeep
+                with open(folder_path / ".gitkeep", "w", encoding="utf-8") as f:
+                    pass
+                self.escribir_en_consola("📁 Carpeta TRANSLATION_FILES_TO_PACK creada automáticamente.\n", "warning")
+            except Exception as e:
+                err_msg = f"No se pudo crear la carpeta TRANSLATION_FILES_TO_PACK: {e}"
+                self.escribir_en_consola(f"❌ {err_msg}\n", "error")
+                self.after(0, lambda: messagebox.showerror("Error de carpeta", err_msg))
+                return False
+
+        # Reglas de exclusión
+        def es_excluido(p: Path):
+            # No incluir .gitkeep
+            if p.name == ".gitkeep":
+                return True
+            # No incluir el propio packed.dat si por error estuviese dentro
+            if p.name == "packed.dat":
+                return True
+            # No incluir caches de python (e.g. __pycache__, .pyc, .pyo, .pyd)
+            if "__pycache__" in p.parts:
+                return True
+            if p.suffix in [".pyc", ".pyo", ".pyd"]:
+                return True
+            # No incluir archivos temporales (e.g. .tmp, .temp, .bak, .swp, o que empiezan con ~$)
+            if p.suffix in [".tmp", ".temp", ".bak", ".swp"]:
+                return True
+            if p.name.startswith("~$"):
+                return True
+            return False
+
+        # Encontrar todos los archivos empaquetables
+        empaquetables = []
+        try:
+            for root, dirs, files in os.walk(folder_path):
+                for file in files:
+                    file_path = Path(root) / file
+                    if not es_excluido(file_path):
+                        empaquetables.append(file_path)
+        except Exception as e:
+            err_msg = f"Error al explorar la carpeta de traducción: {e}"
+            self.escribir_en_consola(f"❌ {err_msg}\n", "error")
+            self.after(0, lambda: messagebox.showerror("Error de exploración", err_msg))
+            return False
+
+        # Validación de carpeta vacía
+        if not empaquetables:
+            msg = "La carpeta TRANSLATION_FILES_TO_PACK está vacía o solo contiene elementos excluidos.\n" \
+                  "No se puede generar packed.dat y se cancela la compilación."
+            self.escribir_en_consola(f"⚠️ {msg}\n", "warning")
+            # Mostrar aviso claro en la GUI
+            self.after(0, lambda: messagebox.showwarning("Carpeta vacía", msg))
+            return False
+
+        self.escribir_en_consola(f"📦 Encontrados {len(empaquetables)} archivos empaquetables.\n", "info")
+
+        # Generación segura usando un archivo temporal
+        temp_packed = Path("packed.dat.tmp")
+        try:
+            # Comprimir recursivamente conservando rutas relativas respecto a TRANSLATION_FILES_TO_PACK
+            with zipfile.ZipFile(temp_packed, "w", zipfile.ZIP_DEFLATED) as zip_f:
+                for file_path in empaquetables:
+                    # Ruta relativa respecto a TRANSLATION_FILES_TO_PACK
+                    rel_path = file_path.relative_to(folder_path)
+                    self.escribir_en_consola(f"   ➕ Añadiendo: {rel_path}\n")
+
+                    # Forzar lectura para verificar que es legible. Si falla, lanzará excepción.
+                    with open(file_path, "rb") as f_test:
+                        # Leer un fragmento para estar seguros de que es accesible
+                        f_test.read(1024)
+
+                    zip_f.write(file_path, rel_path)
+
+            # Verificar validez del archivo zip generado
+            with zipfile.ZipFile(temp_packed, "r") as zip_f:
+                bad_file = zip_f.testzip()
+                if bad_file is not None:
+                    raise Exception(f"El archivo ZIP temporal generado está corrupto (primer error en: {bad_file})")
+
+            # Reemplazo seguro
+            dest_packed = Path("packed.dat")
+            if temp_packed.exists():
+                if dest_packed.exists():
+                    os.remove(dest_packed)
+                os.rename(temp_packed, dest_packed)
+
+            self.escribir_en_consola("✅ packed.dat generado y reemplazado con éxito.\n", "success")
+            return True
+
+        except Exception as e:
+            # Limpiar archivo temporal si quedó a medias
+            if temp_packed.exists():
+                try:
+                    os.remove(temp_packed)
+                except:
+                    pass
+
+            err_msg = f"Error durante el empaquetado de archivos: {e}"
+            self.escribir_en_consola(f"❌ {err_msg}\n", "error")
+            self.escribir_en_consola(traceback.format_exc(), "error")
+            self.after(0, lambda: messagebox.showerror("Error de empaquetado", err_msg))
+            return False
+
     def iniciar_compilacion_completa(self):
         """Inicia el proceso completo de compilación - MÉTODO ORIGINAL"""
         self.compile_console.configure(state="normal")
@@ -3509,6 +3629,18 @@ GAME_CONFIG = {
                 config = {"GAME_NAME_DISPLAY": "MetalWar"}
 
             self.escribir_en_consola("   ✅ Configuración cargada\n\n", "success")
+            self.progress_bar.set(0.15)
+
+            # PASO 2.5: Crear packed.dat
+            self.escribir_en_consola("2.5. 📦 CREANDO PACKED.DAT...\n", "info")
+            if not self._crear_packed_dat():
+                self.escribir_en_consola("\n❌ Cancelando compilación por error en packed.dat\n", "error")
+                self.progress_bar.set(0)
+                self.status_label.configure(
+                    text="❌ Error en packed.dat", text_color="#F44336"
+                )
+                return
+
             self.progress_bar.set(0.2)
 
             # PASO 3: Crear spec
