@@ -14,6 +14,7 @@ import json
 from tkinter import filedialog
 import ctypes
 import random
+import datetime
 
 from config import GAME_CONFIG
 from utils import resource_path
@@ -349,6 +350,20 @@ class Installer:
                 self.avatar.hide()
                 
             return
+
+        # ====================================================================
+        # CREAR ARCHIVO DE LOG Y CABECERA
+        # ====================================================================
+        log_path = os.path.join(dest_folder, "install_log.txt")
+        try:
+            now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            with open(log_path, "w", encoding="utf-8") as log_file:
+                log_file.write(f"=== INSTALACIÓN DE METALWAR ===\n")
+                log_file.write(f"Fecha/Hora: {now_str}\n")
+                log_file.write(f"Ruta de destino: {dest_folder}\n")
+                log_file.write(f"================================\n\n")
+        except Exception as log_err:
+            print(f"[LOG] Error al crear cabecera de log: {log_err}")
         
         # ====================================================================
         # BUSCAR ARCHIVO COMPRIMIDO
@@ -388,6 +403,13 @@ class Installer:
                     for i, file_info in enumerate(file_list):
                         zip_file.extract(file_info, dest_folder)
                         
+                        # Registrar extracción en log
+                        try:
+                            with open(log_path, "a", encoding="utf-8") as log_file:
+                                log_file.write(f"[EXTRAÍDO] {file_info.filename}\n")
+                        except Exception as log_err:
+                            print(f"[LOG] Error al escribir en log: {log_err}")
+
                         # Actualizar progreso
                         self.real_progress = (i + 1) / total_files
                         
@@ -406,6 +428,14 @@ class Installer:
                         
                         for i, file_info in enumerate(file_list):
                             rar_file.extract(file_info, dest_folder)
+
+                            # Registrar extracción en log
+                            try:
+                                with open(log_path, "a", encoding="utf-8") as log_file:
+                                    log_file.write(f"[EXTRAÍDO] {file_info.filename}\n")
+                            except Exception as log_err:
+                                print(f"[LOG] Error al escribir en log: {log_err}")
+
                             self.real_progress = (i + 1) / total_files
                             
                 except Exception as rar_error:
@@ -474,6 +504,14 @@ class Installer:
                                 self.avatar.set_immediate_bark("🎉 ¡Parche aplicado!")
                                 
                             print(f"[PARCHE] Parche aplicado exitosamente")
+
+                            # Registrar parche en log
+                            try:
+                                with open(log_path, "a", encoding="utf-8") as log_file:
+                                    rel_patch_path = os.path.relpath(target_full_path, dest_folder)
+                                    log_file.write(f"[PARCHEADO CRC] {rel_patch_path}\n")
+                            except Exception as log_err:
+                                print(f"[LOG] Error al escribir parche en log: {log_err}")
                         else:
                             self.status_text = "ERROR EN PARCHE"
                             

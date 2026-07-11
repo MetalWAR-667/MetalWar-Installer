@@ -644,6 +644,8 @@ class SpectrumAnalyzer:
     def __init__(self, width, height):
         self.w, self.h = width, height
         self.bars = 64  # Número de barras del espectro
+        if self.bars <= 0:
+            self.bars = 1
         self.bar_width = max(1, width // self.bars)
 
         # Calcular margen horizontal para centrado
@@ -781,6 +783,8 @@ class SpectrumAnalyzer:
         """
         try:
             # Validar entradas para evitar errores
+            if self.bars <= 0:
+                return (255, 255, 255, 200)
             index = max(0, min(self.bars - 1, int(index)))
             value = max(0.0, min(1.0, float(value)))
             bpm_pulse = max(0.0, min(1.0, float(bpm_pulse)))
@@ -990,7 +994,7 @@ class SpectrumAnalyzer:
 
                 # Añadir pulso BPM
                 if bpm_phase < 0.2:  # En el golpe
-                    val += bpm_pulse * 0.4 * np.exp(-i * 0.05)
+                    val += bpm_pulse * 0.4 * math.exp(-i * 0.05)
 
                 # Efecto tracker: silenciar aleatoriamente, menos en beats
                 if is_tracker_physics and random.random() > (0.85 - bpm_pulse * 0.2):
