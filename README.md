@@ -336,6 +336,21 @@ Not because it hates you.
 Because an installer without files is just a very enthusiastic empty box.
 
 ---
+
+## ⚠️ About Releases
+
+The executable available under **Releases** is considered a stable snapshot, but it is **not always up to date** with the latest features.
+
+Development happens in the repository first.
+
+If you want the newest toys, questionable engineering decisions, and freshly overengineered features, clone the repository and run:
+
+```bash
+git clone https://github.com/MetalWAR-667/MetalWar-Installer.git
+```
+```bash
+python Compiler_GUIV2.py
+```
  
 ## Warranty
 This installer comes with absolutely no warranty.
@@ -694,6 +709,21 @@ python main.py
 python Compiler_GUIv2.py
 
 ---
+
+## ⚠️ Sobre los lanzamientos
+
+El ejecutable disponible en **Releases** se considera una instantánea estable, pero **no siempre está al día** con las últimas características.
+
+El desarrollo ocurre primero en el repositorio.
+
+Si quieres los juguetes más nuevos, decisiones de ingeniería cuestionables y funcionalidades recién sobreingenierizadas, clona el repositorio y ejecuta:
+
+```bash
+git clone https://github.com/MetalWAR-667/MetalWar-Installer.git
+```
+```bash
+python Compiler_GUIV2.py
+```
 
 ## Cómo usar Compiler_GUIV2.py
 
