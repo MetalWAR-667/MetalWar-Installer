@@ -351,6 +351,70 @@ Finding which one is left as an exercise for the reader. 🎸
 
 | Version | Workshop Notes |
 |---------|----------------|
+
+**v1.0777 — The Number of the Beast**
+
+The installer keeps evolving. This time it has learned to listen... and to leave evidence of everything it does.
+
+### What's New
+
+* ✔️ Solved the mystery inside `audio.py`. As for the missing library... it was out partying with Dr. Jones.
+* ✔️ New `install_log.txt` generated automatically during installation.
+* ✔️ The log now includes:
+
+  * Extracted files.
+  * CRC-patched files.
+  * Installation date and time.
+  * User-selected destination path.
+* ✔️ The log makes debugging easier and lets you verify exactly what happened during the installation process.
+
+### Project Status
+
+The installer no longer just gets the job done.
+
+It now leaves behind proof that it actually did it.
+
+Because arguing with a user can be entertaining...
+
+But arguing with a log file usually takes a lot less time.
+
+### Workshop Message
+
+> *"Programs lie. Logs do too... but much less often."*
+
+---
+
+**v1.0666 — The Compiler Strikes Back**
+
+The compiler has finally decided to stop wasting your time.
+
+### What's New
+
+* ✔️ The compiler now generates `packed.dat` automatically.
+* ✔️ No more creating or renaming ZIP files by hand.
+* ✔️ New `TRANSLATION_FILES_TO_PACK` directory as the source for all translation files.
+* ✔️ Automatic validation when the folder is empty.
+* ✔️ Recursive packaging while preserving the directory structure.
+* ✔️ Automatic exclusion of junk files (`.gitkeep`, temporary files, caches, etc.).
+* ✔️ Safe writing of `packed.dat` to prevent corrupted output.
+* ✔️ New automated test suite covering the entire packaging pipeline.
+
+### Project Status
+
+The installer no longer just works.
+
+It's starting to develop bad habits.
+
+Every new version tries to do one more thing for you, so you can spend your time on the things that actually matter.
+
+Like arguing with the compiler because an icon is one pixel off.
+
+### Workshop Message
+
+> *"If you're still building `packed.dat` by hand... you probably eject CDs with a paperclip too."*
+
+|  Version | Workshop Notes |
+|----------|----------------|
 | **v1.0** | **This WAR is OVER!** — The installer is stable. The code has been tamed. |
 | **v0.8** | **Explosive Finale** — Every spectacular ending needs a detonation. Added X-Wing fighters doing barrel rolls on the closing screen. Why? Because we could. |
 | **v0.6** | **Enterprise Star Trek Mode** — I watched Star Trek on TV, fell in love with the starfield, and the next day I was coding it. Now it's your visual problem. |
@@ -703,6 +767,67 @@ Probablemente encontrarás al menos una cosa que te haga decir:
 Descubrir cuál es se deja como ejercicio para el lector. 🎸
 
 ## Workshop Log
+
+**v1.0777 — The Number of the Beast**
+
+El instalador sigue mutando. Esta vez ha aprendido a escuchar... y a dejar constancia de lo que hace.
+
+### Novedades
+
+* ✔️ Resuelto el enigma en`audio.py`, y la libreria perdida, esta de farra con el Dr. Jones.
+* ✔️ Nuevo `install_log.txt` generado automáticamente durante la instalación.
+* ✔️ El registro incluye:
+
+  * Archivos extraídos.
+  * Archivos parcheados mediante CRC.
+  * Fecha y hora de la instalación.
+  * Ruta de destino seleccionada por el usuario.
+* ✔️ El registro facilita la depuración y permite verificar exactamente qué ocurrió durante el proceso de instalación.
+
+### Estado del Proyecto
+
+Ahora el instalador no solo hace las cosas.
+
+También deja pruebas de que las ha hecho.
+
+Porque discutir con un usuario es divertido...
+
+Pero discutir contra un archivo de log suele durar bastante menos.
+
+### Mensaje del Taller
+
+> *"Los programas mienten. Los logs también... pero bastante menos."*
+
+
+**v1.0666 — The Compiler Strikes Back**
+
+El compilador ha decidido dejar de hacerte perder el tiempo.
+
+### Novedades
+
+* ✔️ El compilador genera automáticamente `packed.dat`.
+* ✔️ Ya no es necesario crear ni renombrar ZIPs manualmente.
+* ✔️ Nuevo directorio `TRANSLATION_FILES_TO_PACK` como origen de todos los archivos del parche.
+* ✔️ Validación automática cuando la carpeta está vacía.
+* ✔️ Empaquetado recursivo conservando la estructura de directorios.
+* ✔️ Exclusión automática de archivos basura (`.gitkeep`, temporales, cachés, etc.).
+* ✔️ Escritura segura de `packed.dat` para evitar archivos corruptos.
+* ✔️ Nueva batería de pruebas automatizadas para verificar el proceso completo de empaquetado.
+
+### Estado del Proyecto
+
+El instalador ya no solo funciona.
+
+Empieza a desarrollar malos hábitos.
+
+Cada nueva versión intenta hacer una cosa más por ti para que tú puedas dedicarte a las importantes.
+
+Como discutir con el compilador porque el icono tiene un píxel desplazado.
+
+### Mensaje del Taller
+
+> *"Si todavía construyes `packed.dat` a mano... probablemente también expulses los CD con un clip."*
+
 
 **v1.0 - This WAR is OVER!**  
 El instalador es estable. El código ha sido domado.
